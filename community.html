@@ -13,24 +13,24 @@
 
     body {
       background: #121212;
-      color: #fff;
+      color: #f5f5f5;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
+      line-height: 1.5;
     }
 
     .container {
       max-width: 900px;
       margin: 0 auto;
-      text-align: center;
     }
 
     .back {
-      color: #bbb;
+      color: #bdbdbd;
       text-decoration: none;
       font-size: 0.9rem;
       display: inline-block;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
 
     /* TITLE + LOGO */
@@ -39,16 +39,17 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      text-align: center;
     }
 
     .title-row img {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #7e57c2;
-      box-shadow: 0 0 12px rgba(126,87,194,0.9);
+      box-shadow: 0 0 10px rgba(126,87,194,0.6);
     }
 
     h1 {
@@ -56,92 +57,135 @@
       margin: 0;
     }
 
-    /* ICON */
+    /* ICONS */
     .icon {
-      width: 22px;
-      vertical-align: middle;
+      width: 20px;
+      height: 20px;
       margin-right: 8px;
     }
 
-    /* CARD */
+    /* CARD BASE */
     .card {
-      background: #1a1a1a;
-      border: 1px solid #333;
+      background: #1b1b1b;
       border-radius: 16px;
-      padding: 20px 22px;
-      margin: 20px auto;
-      max-width: 700px;
-      text-align: left;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      border: 1px solid #2b2b2b;
+      padding: 20px 20px;
+      margin: 18px auto;
+      max-width: 720px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
     }
 
     .card h2 {
-      border-bottom: 1px solid #333;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
       font-size: 1.2rem;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #2c2c2c;
     }
 
-    /* GLOW BUTTON */
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    ul li {
+      margin-bottom: 12px;
+    }
+
+    ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #64b5f6;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* GROUP CONTACTS – COMFORTABLE UI */
+    .group-card {
+      text-align: center;
+    }
+
+    .group-card h2 {
+      text-align: left;
+    }
+
+    .group-card ul {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px; /* clean spacing between buttons */
+    }
+
+    .group-card li {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
     .glow-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 18px;
+      gap: 8px;
+      padding: 10px 20px;
+      width: 100%;
+      max-width: 380px;       /* nice comfortable length */
       border-radius: 999px;
       background: linear-gradient(135deg, #3949ab, #7e57c2);
+      border: 1px solid rgba(255,255,255,0.18);
       color: #fff;
-      text-decoration: none;
       font-size: 0.95rem;
-      box-shadow: 0 0 10px rgba(126,87,194,0.8);
-      transition: 0.25s;
-      animation: pulseGlow 2s infinite alternate;
-      white-space: nowrap;
+      box-shadow: 0 0 10px rgba(0,0,0,0.55);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      text-decoration: none;
     }
 
-    @keyframes pulseGlow {
-      from { box-shadow: 0 0 8px rgba(126,87,194,0.5); }
-      to   { box-shadow: 0 0 18px rgba(126,87,194,1); }
+    .glow-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 14px rgba(126,87,194,0.9);
+      background: linear-gradient(135deg, #455ad7, #8a63d6);
     }
 
-    /* DEVELOPER SECTION */
+    /* DEVELOPERS */
     .dev-section-title {
-      margin-top: 30px;
-      margin-bottom: 10px;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
     }
 
     .dev-container {
       display: flex;
       justify-content: center;
-      gap: 20px;
       flex-wrap: wrap;
-      margin-top: 10px;
+      gap: 22px;
+      margin-top: 6px;
     }
 
     .dev-card {
-      width: 190px;
       background: #191919;
-      padding: 18px;
       border-radius: 14px;
-      border: 1px solid #333;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      border: 1px solid #2c2c2c;
+      padding: 18px;
+      width: 190px;
       text-align: center;
-      transition: 0.3s;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .dev-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.65);
     }
 
     .dev-card img {
-      width: 70px;
-      height: 70px;
+      width: 76px;
+      height: 76px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #7e57c2;
@@ -151,19 +195,24 @@
     .dev-name {
       font-weight: bold;
       margin-bottom: 4px;
+      font-size: 1rem;
     }
 
     footer {
       margin-top: 40px;
       font-size: 0.85rem;
       opacity: 0.75;
+      text-align: center;
     }
 
-    /* ========== MOBILE — TWO DEVS PER ROW ========== */
+    /* ========== MOBILE ========== */
     @media (max-width: 600px) {
-
       body {
-        padding: 12px;
+        padding: 16px;
+      }
+
+      .container {
+        max-width: 100%;
       }
 
       .title-row {
@@ -172,40 +221,48 @@
       }
 
       h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+      }
+
+      .card {
+        padding: 18px 16px;
+        margin: 16px auto;
+      }
+
+      .card h2 {
+        font-size: 1.12rem;
       }
 
       .glow-btn {
-        width: 100%;
-        max-width: 300px;
-        white-space: normal;
+        max-width: 100%;
+        font-size: 0.94rem;
       }
 
-      /* GRID: 2 DEVS PER ROW */
+      .icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
+      }
+
+      /* Developers: 2 in a row, but with room */
       .dev-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        padding: 0 4px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
       }
 
       .dev-card {
         width: 100%;
-        padding: 16px;
+        padding: 16px 10px;
       }
 
       .dev-card img {
-        width: 85px;
-        height: 85px;
-      }
-
-      .dev-name {
-        font-size: 1.1rem;
+        width: 70px;
+        height: 70px;
       }
     }
   </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -216,7 +273,8 @@
     <h1>GGD MM Community</h1>
   </div>
 
-  <div class="card">
+  <!-- GROUP CONTACTS -->
+  <div class="card group-card">
     <h2>Group Contacts</h2>
     <ul>
       <li>
@@ -225,7 +283,6 @@
           Discord Group
         </a>
       </li>
-
       <li>
         <a class="glow-btn" href="https://t.me/ggdmm1" target="_blank">
           <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
@@ -235,6 +292,7 @@
     </ul>
   </div>
 
+  <!-- USEFUL LINKS -->
   <div class="card">
     <h2>Useful Links</h2>
     <ul>
@@ -244,6 +302,7 @@
     </ul>
   </div>
 
+  <!-- DEVELOPERS -->
   <h2 class="dev-section-title">Developers</h2>
 
   <div class="dev-container">
@@ -260,7 +319,9 @@
     </div>
   </div>
 
-  <footer>GGD MM Community Page • 2025</footer>
+  <footer>
+    GGD MM Community Page • 2025
+  </footer>
 </div>
 
 </body>
