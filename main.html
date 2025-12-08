@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GGD MM – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ⭐ NEON 3D DARK BLUE BACKGROUND ⭐ */
+    body {
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+
+      background:
+        radial-gradient(circle at 20% 20%, #3b4cca, #0d0f2d 60%, #030414 100%);
+      background-attachment: fixed;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    /* MAIN WRAPPER */
+    .wrapper {
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      flex: 1 1 320px;
+      background: rgba(15, 15, 30, 0.88);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      padding: 20px 22px 24px;
+      backdrop-filter: blur(8px);
+      animation: floatUp 0.9s ease-out;
+      position: relative;
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ROUND LOGO */
+    .logo-circle {
+      position: absolute;
+      top: -30px;
+      left: 18px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      padding: 4px;
+      background: radial-gradient(circle at top, #ffeb3b, #ff9800);
+      box-shadow: 0 0 18px rgba(255, 193, 7, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-circle img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(0, 0, 0, 0.4);
+    }
+
+    /* BANNER */
+    .banner {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 16px;
+    }
+
+    .banner img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* TEXT */
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #b3e5fc;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: #d0d0ff;
+      margin-bottom: 16px;
+    }
+
+    /* MAIN BUTTON */
+    .cta-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #ffb347, #ff7043);
+      color: #2b1810;
+      font-weight: bold;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 0 12px rgba(255, 183, 77, 0.9);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255, 183, 77, 1);
+    }
+
+    .cta-main span.icon {
+      font-size: 1.1rem;
+    }
+
+    /* MENU CARD */
+    .menu-card {
+      flex: 0 1 260px;
+      background: rgba(10, 10, 24, 0.88);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      padding: 18px 18px 20px;
+      text-align: center;
+      animation: floatUp 1s ease-out;
+    }
+
+    .menu-title {
+      font-size: 1.05rem;
+      margin-bottom: 14px;
+      color: #cfd8ff;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    /* MENU BUTTONS */
+    .menu-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(103, 58, 183, 0.7);
+      background: radial-gradient(circle at top left, #5c6bc0, #311b92);
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 0.9rem;
+      box-shadow: 0 0 10px rgba(103, 58, 183, 0.9);
+      transition: transform 0.22s, box-shadow 0.22s, background 0.22s;
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 18px rgba(159, 168, 218, 1);
+    }
+
+    /* COMMUNITY BUTTON WITH LOGO */
+    .menu-btn.community {
+      background: radial-gradient(circle at top left, #ff80ab, #ad1457);
+      box-shadow: 0 0 14px rgba(255, 64, 129, 0.9);
+    }
+
+    .menu-btn.community img {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    /* FOOTER */
+    .menu-footer {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: #9fa8da;
+      opacity: 0.8;
+    }
+
+    .menu-footer a {
+      color: #ffcc80;
+      text-decoration: none;
+    }
+
+    .menu-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* SMALL SCREEN */
+    @media (max-width: 720px) {
+      .hero-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <!-- LEFT HERO -->
+  <section class="hero-card">
+
+    <div class="logo-circle">
+      <img src="ggd.png" alt="GGD MM Logo">
+    </div>
+
+    <div class="banner" style="margin-top:30px;">
+  
+    </div>
+
+    <div class="hero-tag">Goose Goose Duck • Myanmar</div>
+
+    <h1 class="hero-title">GGD MM</h1>
+    <p class="hero-sub">
+      A fan hub for Goose Goose Duck players in Myanmar.
+      Check maps, roles, guides, and join our community groups.
+    </p>
+
+    <a href="community.html" class="cta-main">
+      <span class="icon">🎮</span>
+      <span>Join Us</span>
+    </a>
+  </section>
+
+  <!-- RIGHT MENU -->
+  <aside class="menu-card">
+    <div class="menu-title">Jump into a section</div>
+
+    <div class="menu-grid">
+      <a href="maps.html" class="menu-btn">🗺️ Maps</a>
+      <a href="roles.html" class="menu-btn">🦢 Roles</a>
+      <a href="guide.html" class="menu-btn">📖 Guide</a>
+
+      <a href="community.html" class="menu-btn community">
+        <img src="ggd.png">
+        Community
+      </a>
+    </div>
+
+    <div class="menu-footer">
+      Built by Apple & Leon • Join us on <a href="community.html">Discord & Telegram</a>
+    </div>
+  </aside>
+</div>
+
+</body>
+</html>
