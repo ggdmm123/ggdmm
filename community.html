@@ -181,7 +181,7 @@
       text-align: center;
     }
 
-    /* ========= MOBILE RESPONSIVE STYLES ========= */
+    /* ========= MOBILE FIX: FULLY SHOW DEVELOPERS ========= */
     @media (max-width: 600px) {
       body {
         padding: 12px;
@@ -213,9 +213,9 @@
 
       .glow-btn {
         width: 100%;
-        max-width: 320px;
+        max-width: 360px;
         font-size: 0.9rem;
-        white-space: normal; /* allow wrapping on very small screens */
+        white-space: normal;
       }
 
       .icon {
@@ -223,14 +223,26 @@
         margin-right: 6px;
       }
 
+      /* FULL-WIDTH DEVELOPER DISPLAY */
       .dev-container {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
       }
 
       .dev-card {
         width: 100%;
-        max-width: 320px;
+        max-width: 360px;
+        padding: 22px;
+      }
+
+      .dev-card img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .dev-name {
+        font-size: 1.15rem;
       }
 
       .back {
