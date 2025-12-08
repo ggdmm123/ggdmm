@@ -181,12 +181,68 @@
       text-align: center;
     }
 
+    /* ========= MOBILE RESPONSIVE STYLES ========= */
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 0 4px;
+      }
+
+      .title-row {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .card {
+        padding: 16px 14px;
+        margin: 14px auto;
+      }
+
+      .card h2 {
+        font-size: 1.05rem;
+      }
+
+      .glow-btn {
+        width: 100%;
+        max-width: 320px;
+        font-size: 0.9rem;
+        white-space: normal; /* allow wrapping on very small screens */
+      }
+
+      .icon {
+        width: 20px;
+        margin-right: 6px;
+      }
+
+      .dev-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .dev-card {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .back {
+        font-size: 0.85rem;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <a class="back" href="index.html">⬅ Back</a>
+  <a class="back" href="main.html">⬅ Back</a>
 
   <!-- TITLE + LOGO -->
   <div class="title-row">
@@ -200,13 +256,13 @@
     <ul>
       <li>
         <a class="glow-btn" href="https://discord.gg/dtrdtmtMW" target="_blank">
-          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
           Discord Group
         </a>
       </li>
       <li>
         <a class="glow-btn" href="https://t.me/ggdmm1" target="_blank">
-          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+          <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
           Telegram Group
         </a>
       </li>
@@ -247,4 +303,3 @@
 
 </body>
 </html>
-
