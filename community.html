@@ -215,6 +215,28 @@
       text-align: center;
     }
 
+    /* Small “tap to enable sound” hint */
+    #music-hint {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(30, 30, 30, 0.9);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      border: 1px solid #7e57c2;
+      box-shadow: 0 0 10px rgba(126,87,194,0.7);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    #music-hint span {
+      font-size: 1rem;
+    }
+
     /* ========== MOBILE ========== */
 
     @media (max-width: 600px) {
@@ -337,21 +359,43 @@
   </footer>
 </div>
 
-<!-- 🔊 BACKGROUND MUSIC AUTOPLAY -->
-<audio id="bgm" autoplay loop>
+<!-- 🔊 BACKGROUND MUSIC (starts muted but autoplaying) -->
+<audio id="bgm" autoplay loop muted>
   <source src="Tu.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Small hint so users know they can enable sound -->
+<div id="music-hint">
+  <span>🔊</span>
+  <span>Tap to enable music</span>
+</div>
+
 <script>
-  // Try to start the music when the page loads.
-  // This should work because the user clicked "Community" to come here.
-  window.addEventListener("load", () => {
-    const audio = document.getElementById("bgm");
+  const audio = document.getElementById('bgm');
+  const hint = document.getElementById('music-hint');
+
+  function enableMusic() {
     if (!audio) return;
-    audio.volume = 0.5; // 50% volume, optional
+    audio.muted = false;
+    audio.volume = 0.5;
     audio.play().catch(err => {
-      console.log("Autoplay might be blocked by the browser:", err);
+      console.log('Play failed:', err);
     });
+
+    if (hint) {
+      hint.style.display = 'none';
+    }
+
+    // only need this once
+    document.removeEventListener('click', enableMusic);
+    hint && hint.removeEventListener('click', enableMusic);
+  }
+
+  // Any click on the page or on the hint enables sound
+  document.addEventListener('click', enableMusic);
+  hint.addEventListener('click', (e) => {
+    e.stopPropagation(); // avoid double handling
+    enableMusic();
   });
 </script>
 
