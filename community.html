@@ -1,9 +1,14 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <title>Community – GGD MM</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     * {
       box-sizing: border-box;
@@ -34,6 +39,7 @@
     }
 
     /* TITLE + LOGO */
+
     .title-row {
       display: flex;
       align-items: center;
@@ -58,6 +64,7 @@
     }
 
     /* ICONS */
+
     .icon {
       width: 20px;
       height: 20px;
@@ -65,6 +72,7 @@
     }
 
     /* CARD BASE */
+
     .card {
       background: #1b1b1b;
       border-radius: 16px;
@@ -106,6 +114,7 @@
     }
 
     /* GROUP CONTACTS – COMFORTABLE UI */
+
     .group-card {
       text-align: center;
     }
@@ -153,6 +162,7 @@
     }
 
     /* DEVELOPERS */
+
     .dev-section-title {
       margin-top: 28px;
       margin-bottom: 12px;
@@ -206,6 +216,7 @@
     }
 
     /* ========== MOBILE ========== */
+
     @media (max-width: 600px) {
       body {
         padding: 16px;
@@ -262,7 +273,9 @@
       }
     }
   </style>
+
 </head>
+
 <body>
 
 <div class="container">
@@ -312,9 +325,9 @@
       <div>Developer & Support</div>
     </div>
 
-    <div class="dev-card">
-      <img src="leon.jpg" alt="Leon">
-      <div class="dev-name">Leon</div>
+    <div class="dev-card"> 
+      <img src="leon.jpg" alt="Leon"> 
+      <div class="dev-name">Leon</div> 
       <div>Developer & Designer</div>
     </div>
   </div>
@@ -324,25 +337,23 @@
   </footer>
 </div>
 
-  <audio id="bgm" autoplay>
+<!-- 🔊 BACKGROUND MUSIC AUTOPLAY -->
+<audio id="bgm" autoplay loop>
   <source src="Tu.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  // Force playback after page load
+  // Try to start the music when the page loads.
+  // This should work because the user clicked "Community" to come here.
   window.addEventListener("load", () => {
     const audio = document.getElementById("bgm");
+    if (!audio) return;
+    audio.volume = 0.5; // 50% volume, optional
     audio.play().catch(err => {
-      console.log("Autoplay blocked:", err);
+      console.log("Autoplay might be blocked by the browser:", err);
     });
   });
 </script>
-  
 
 </body>
 </html>
-
-
-
-
-
