@@ -324,8 +324,24 @@
   </footer>
 </div>
 
+  <audio id="bgm" autoplay>
+  <source src="Tu.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // Force playback after page load
+  window.addEventListener("load", () => {
+    const audio = document.getElementById("bgm");
+    audio.play().catch(err => {
+      console.log("Autoplay blocked:", err);
+    });
+  });
+</script>
+  
+
 </body>
 </html>
+
 
 
 
