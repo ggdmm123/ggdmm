@@ -1,12 +1,8 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <title>Community – GGD MM</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <style>
@@ -39,7 +35,6 @@
     }
 
     /* TITLE + LOGO */
-
     .title-row {
       display: flex;
       align-items: center;
@@ -64,7 +59,6 @@
     }
 
     /* ICONS */
-
     .icon {
       width: 20px;
       height: 20px;
@@ -72,7 +66,6 @@
     }
 
     /* CARD BASE */
-
     .card {
       background: #1b1b1b;
       border-radius: 16px;
@@ -114,7 +107,6 @@
     }
 
     /* GROUP CONTACTS – COMFORTABLE UI */
-
     .group-card {
       text-align: center;
     }
@@ -128,7 +120,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px; /* clean spacing between buttons */
+      gap: 14px;
     }
 
     .group-card li {
@@ -144,7 +136,7 @@
       gap: 8px;
       padding: 10px 20px;
       width: 100%;
-      max-width: 380px;       /* nice comfortable length */
+      max-width: 380px;
       border-radius: 999px;
       background: linear-gradient(135deg, #3949ab, #7e57c2);
       border: 1px solid rgba(255,255,255,0.18);
@@ -162,7 +154,6 @@
     }
 
     /* DEVELOPERS */
-
     .dev-section-title {
       margin-top: 28px;
       margin-bottom: 12px;
@@ -215,30 +206,7 @@
       text-align: center;
     }
 
-    /* Small “tap to enable sound” hint */
-    #music-hint {
-      position: fixed;
-      bottom: 16px;
-      right: 16px;
-      background: rgba(30, 30, 30, 0.9);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 0.82rem;
-      border: 1px solid #7e57c2;
-      box-shadow: 0 0 10px rgba(126,87,194,0.7);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      z-index: 999;
-    }
-
-    #music-hint span {
-      font-size: 1rem;
-    }
-
     /* ========== MOBILE ========== */
-
     @media (max-width: 600px) {
       body {
         padding: 16px;
@@ -277,7 +245,6 @@
         margin-right: 6px;
       }
 
-      /* Developers: 2 in a row, but with room */
       .dev-container {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -297,7 +264,6 @@
   </style>
 
 </head>
-
 <body>
 
 <div class="container">
@@ -347,9 +313,9 @@
       <div>Developer & Support</div>
     </div>
 
-    <div class="dev-card"> 
-      <img src="leon.jpg" alt="Leon"> 
-      <div class="dev-name">Leon</div> 
+    <div class="dev-card">
+      <img src="leon.jpg" alt="Leon">
+      <div class="dev-name">Leon</div>
       <div>Developer & Designer</div>
     </div>
   </div>
@@ -358,46 +324,6 @@
     GGD MM Community Page • 2025
   </footer>
 </div>
-
-<!-- 🔊 BACKGROUND MUSIC (starts muted but autoplaying) -->
-<audio id="bgm" autoplay loop muted>
-  <source src="Tu.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Small hint so users know they can enable sound -->
-<div id="music-hint">
-  <span>🔊</span>
-  <span>Tap to enable music</span>
-</div>
-
-<script>
-  const audio = document.getElementById('bgm');
-  const hint = document.getElementById('music-hint');
-
-  function enableMusic() {
-    if (!audio) return;
-    audio.muted = false;
-    audio.volume = 0.5;
-    audio.play().catch(err => {
-      console.log('Play failed:', err);
-    });
-
-    if (hint) {
-      hint.style.display = 'none';
-    }
-
-    // only need this once
-    document.removeEventListener('click', enableMusic);
-    hint && hint.removeEventListener('click', enableMusic);
-  }
-
-  // Any click on the page or on the hint enables sound
-  document.addEventListener('click', enableMusic);
-  hint.addEventListener('click', (e) => {
-    e.stopPropagation(); // avoid double handling
-    enableMusic();
-  });
-</script>
 
 </body>
 </html>
