@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GGD Myanmar • Dark Galaxy Family</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+@font-face {
+  font-family: "Pixel";
+  src: url("https://fonts.gstatic.com/s/pressstart2p/v12/e3t4euO8T-267oIAQAu7txQ.woff2");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top, #03010d, #000000 80%);
+  font-family: "Pixel", sans-serif;
+  color: #dbeafe;
+  overflow-x: hidden;
+}
+
+/* background galaxy */
+.bg-clouds {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(120, 0, 255, 0.55), transparent 55%),
+    radial-gradient(circle at 80% 50%, rgba(0, 140, 255, 0.6), transparent 60%),
+    radial-gradient(circle at 50% 90%, rgba(0, 30, 100, 0.9), transparent 70%);
+  animation: cloudFloat 18s infinite alternate ease-in-out;
+  filter: blur(45px);
+  opacity: 0.9;
+}
+
+@keyframes cloudFloat {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.15) translate(-40px, -30px); }
+}
+
+/* stars */
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 2px),
+    radial-gradient(circle, rgba(180,200,255,0.8) 1px, transparent 2px),
+    radial-gradient(circle, rgba(120,150,255,0.9) 1px, transparent 2px);
+  background-size: 220px 220px, 260px 260px, 300px 300px;
+  animation: starTwinkle 6s infinite linear;
+  opacity: 0.75;
+}
+
+@keyframes starTwinkle {
+  0% { opacity: 0.55; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-8px); }
+  100% { opacity: 0.55; transform: translateY(0); }
+}
+
+/* floating text */
+.ftext {
+  position: fixed;
+  left: -50%;
+  white-space: nowrap;
+  font-size: 12px;
+  color: rgba(180, 220, 255, 0.9);
+  text-shadow: 0 0 9px rgba(120, 170, 255, 0.9);
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.f1 { top: 22%; animation: slideText 28s linear infinite; }
+.f2 { top: 70%; animation: slideText 34s linear infinite; }
+.f3 { top: 85%; animation: slideText 40s linear infinite; }
+
+@keyframes slideText {
+  0% { transform: translateX(-60%); }
+  100% { transform: translateX(160%); }
+}
+
+/* ADMIN CARD */
+.admin-card {
+  max-width: 380px;
+  margin: 40px auto 20px;
+  padding: 24px;
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
+  background: rgba(10, 10, 20, 0.78);
+  border: 1px solid rgba(150, 200, 255, 0.5);
+  box-shadow:
+    0 0 40px rgba(100, 150, 255, 0.5),
+    0 0 80px rgba(60, 120, 255, 0.45),
+    0 20px 60px rgba(0, 0, 0, 1);
+  text-align: center;
+  animation: floatCard 5s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes floatCard {
+  0%,100% { transform: translateY(0) rotateX(2deg); }
+  50% { transform: translateY(-12px) rotateX(-2deg); }
+}
+
+.admin-card::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #003cff, #8f00ff, #007aff);
+  filter: blur(14px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* admin photo */
+.admin-photo {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 14px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(180, 220, 255, 0.9);
+  box-shadow: 0 0 20px rgba(100,150,255,0.9);
+}
+
+.admin-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admin-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #d6e9ff;
+}
+
+.admin-meta {
+  font-size: 10px;
+  color: #a7c2ff;
+  line-height: 1.7;
+}
+
+.admin-meta span {
+  color: #dcecff;
+}
+
+.admin-counter {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-box {
+  padding: 10px 12px;
+  background: rgba(10,20,40,0.9);
+  border-radius: 14px;
+  min-width: 70px;
+  border: 1px solid rgba(160,180,255,0.7);
+  box-shadow:
+    0 0 18px rgba(80,120,255,0.7),
+    inset 0 0 12px rgba(40,60,140,0.7);
+}
+
+.admin-box strong {
+  font-size: 18px;
+  display: block;
+  color: #e0f2ff;
+}
+
+.admin-label {
+  font-size: 10px;
+  color: #9fbfff;
+}
+
+/* MEMBERS SECTION TITLE */
+.section-title {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  color: #b9d6ff;
+}
+
+/* members grid */
+.members {
+  max-width: 1100px;
+  margin: 0 auto 60px;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+/* member card */
+.member-card {
+  position: relative;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(10, 10, 20, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow:
+    0 0 22px rgba(59, 130, 246, 0.6),
+    0 0 40px rgba(37, 99, 235, 0.7);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  cursor: pointer;
+  transform-origin: center;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+
+.member-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #38bdf8, #4f46e5, #0ea5e9);
+  filter: blur(10px);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.member-card:hover {
+  transform: translateY(-6px) scale(1.03) rotateX(3deg) rotateY(-2deg);
+  box-shadow:
+    0 0 28px rgba(100,150,255,0.9),
+    0 0 60px rgba(37,99,235,0.9);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid #c4ddff;
+  box-shadow:
+    0 0 16px rgba(96, 165, 250, 0.9),
+    0 0 24px rgba(59, 130, 246, 0.7);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.badge {
+  font-size: 8px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.4);
+  border: 1px solid rgba(129, 140, 248, 0.9);
+  color: #bfdbfe;
+}
+
+.join-date {
+  font-size: 9px;
+  color: #9bb8ff;
+  margin-top: 2px;
+}
+
+.small-counter {
+  margin-top: 6px;
+  font-size: 9px;
+  color: #a7c9ff;
+}
+
+/* MODAL */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 15, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.modal {
+  width: 320px;
+  max-width: 90vw;
+  border-radius: 18px;
+  padding: 18px 16px 16px;
+  background: rgba(10, 15, 40, 0.95);
+  border: 1px solid rgba(191, 219, 254, 0.7);
+  box-shadow:
+    0 0 26px rgba(96, 165, 250, 0.9),
+    0 0 60px rgba(37, 99, 235, 0.9);
+  position: relative;
+  text-align: center;
+}
+
+.modal::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #38bdf8, #4f46e5, #0ea5e9);
+  filter: blur(10px);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.modal-photo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 10px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(191, 219, 254, 0.9);
+  box-shadow:
+    0 0 18px rgba(96, 165, 250, 0.9),
+    0 0 28px rgba(37, 99, 235, 0.8);
+}
+
+.modal-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-name {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.modal-role {
+  font-size: 9px;
+  color: #bfdbfe;
+  margin-bottom: 8px;
+}
+
+.modal-meta {
+  font-size: 8px;
+  color: #a5b4fc;
+  margin-bottom: 8px;
+}
+
+.modal-meta span {
+  color: #e0f2fe;
+}
+
+.modal-bio {
+  font-size: 9px;
+  color: #cbd5ff;
+  margin-bottom: 10px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #e5e7eb;
+}
+
+.modal-counter {
+  font-size: 9px;
+  color: #bfdbfe;
+  margin-top: 4px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-clouds"></div>
+<div class="stars"></div>
+
+<div class="ftext f1">GGD Myanmar • Dark Galaxy Family</div>
+<div class="ftext f2">Admins of the Cosmos 💙</div>
+<div class="ftext f3">Stay Dark. Stay GGD. 🌑</div>
+
+<!-- ADMIN CARD -->
+<div class="admin-card">
+  <div class="admin-photo">
+    <!-- 🔧 change group.jpg to your real image file -->
+    <img src="1.jpg" alt="GGD Myanmar">
+  </div>
+
+  <div class="admin-title">GGD Myanmar • Admin Panel</div>
+
+  <div class="admin-meta">
+    Created: <span id="adminDate"></span><br>
+    <a href="https://t.me/ggdmm1"> <span>GGD Myanmar</span></a>
+  </div>
+
+  <div class="admin-counter">
+    <div class="admin-box">
+      <strong id="adDays">0</strong>
+      <div class="admin-label">Days</div>
+    </div>
+    <div class="admin-box">
+      <strong id="adHours">00</strong>
+      <div class="admin-label">Hours</div>
+    </div>
+    <div class="admin-box">
+      <strong id="adMinutes">00</strong>
+      <div class="admin-label">Minutes</div>
+    </div>
+    <div class="admin-box">
+      <strong id="adSeconds">00</strong>
+      <div class="admin-label">Seconds</div>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBERS SECTION -->
+<div class="section-title">MEMBERS</div>
+
+<div class="members">
+  <!-- data-* attributes used for modal + counter -->
+  <div class="member-card"
+       data-name="Apple"
+       data-role="Admin"
+       data-date="2024-08-09"
+       data-avatar="2.jpg"
+       data-bio="Galaxy core member, always shining first.">
+    <div class="avatar"><img src="2.jpg" alt="Apple"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Apple</div>
+        <div class="badge">⭐ Admin</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+
+  <div class="member-card"
+       data-name="Leon"
+       data-role="Admin"
+       data-date="2024-08-09"
+       data-avatar="6.jpg"
+       data-bio="Strategist of the dark side, calm but deadly.">
+    <div class="avatar"><img src="6.jpg" alt="Leon"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Leon</div>
+        <div class="badge">⭐ Admin</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+
+  <div class="member-card"
+       data-name="Xezbath"
+       data-role="Admin"
+       data-date="2024-08-09"
+       data-avatar="4.jpg"
+       data-bio="Chaos energy but loyal to GGD universe.">
+    <div class="avatar"><img src="4.jpg" alt="Xezbath"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Xezbath</div>
+        <div class="badge">⭐ Admin</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+
+  <div class="member-card"
+       data-name="Kageno"
+       data-role="Admin"
+       data-date="2024-08-09"
+       data-avatar="0.jpg"
+       data-bio="Cool breeze in the dark galaxy.">
+    <div class="avatar"><img src="0.jpg" alt="Mint"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Kageno</div>
+        <div class="badge">⭐ Admin</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+
+  <div class="member-card"
+       data-name="Mint Ya Ta"
+       data-role="Admin"
+       data-date="2024-012-09"
+       data-avatar="yata.jpg"
+       data-bio="Silent guardian of the group orbit.">
+    <div class="avatar"><img src="yata.jpg" alt="ma mint ya ta "></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Mint Ya Ta</div>
+        <div class="badge">⭐ Admin</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+
+  <div class="member-card"
+       data-name="JooJoo"
+       data-role="Admin"
+       data-date="2025-04-05"
+       data-avatar="5.jpg"
+       data-bio="Laughs that echo across the stars.">
+    <div class="avatar"><img src="5.jpg" alt="JooJoo"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">JooJoo</div>
+        <div class="badge">⭐ Admin</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+
+  <div class="member-card"
+       data-name="May"
+       data-role="Admin"
+       data-date="2024-08-09"
+       data-avatar="3.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="3.jpg" alt="May"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">May</div>
+        <div class="badge">⭐ Admin</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="member-card"
+       data-name="Chuwahwah"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="7.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="7.jpg" alt="Chuwahwah"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Chuwahwah</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="member-card"
+       data-name="Chuwahwah"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="8.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="8.jpg" alt="Evyy"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Evyy</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="member-card"
+       data-name="Htetx2"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="9.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="9.jpg" alt="Htetx2"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Htetx2</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="member-card"
+       data-name="Aba thr"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="10.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="10.jpg" alt="Aba thr"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Aba thr</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="member-card"
+       data-name="Hot Pot"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="11.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="11.jpg" alt="Aba thr"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Hot Pot</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="profileModal">
+  <div class="modal" id="modalInner">
+    <div class="modal-close" id="modalClose">✕</div>
+    <div class="modal-photo">
+      <img id="modalAvatar" src="" alt="">
+    </div>
+    <div class="modal-name" id="modalName">Name</div>
+    <div class="modal-role" id="modalRole">Role</div>
+    <div class="modal-meta">
+      Joined: <span id="modalJoined"></span><br>
+      Days in galaxy: <span id="modalDays"></span>
+    </div>
+    <div class="modal-bio" id="modalBio">Bio text goes here.</div>
+    <div class="modal-counter">
+      Seconds in galaxy: <span id="modalSeconds"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== ADMIN COUNTER =====
+const adminStart = new Date(2024, 7, 9); // 9 Aug 2024
+document.getElementById("adminDate").textContent =
+  adminStart.toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" });
+
+function updateAdminCounter() {
+  const now = new Date();
+  const diff = now - adminStart;
+  if (diff < 0) return;
+  const total = Math.floor(diff / 1000);
+
+  const days = Math.floor(total / 86400);
+  const hours = Math.floor((total % 86400) / 3600);
+  const mins = Math.floor((total % 3600) / 60);
+  const secs = total % 60;
+
+  document.getElementById("adDays").textContent = days;
+  document.getElementById("adHours").textContent = String(hours).padStart(2, "0");
+  document.getElementById("adMinutes").textContent = String(mins).padStart(2, "0");
+  document.getElementById("adSeconds").textContent = String(secs).padStart(2, "0");
+}
+
+updateAdminCounter();
+setInterval(updateAdminCounter, 1000);
+
+// ===== MEMBER DAY COUNTERS =====
+document.querySelectorAll(".member-card").forEach(card => {
+  const dateStr = card.dataset.date; // e.g. "2024-08-09"
+  const joined = new Date(dateStr);
+
+  function updateMember() {
+    const now = new Date();
+    const diff = now - joined;
+    const days = Math.floor(diff / 86400000);
+    card.querySelector(".mcDays").textContent = days < 0 ? 0 : days;
+  }
+
+  updateMember();
+  setInterval(updateMember, 1000);
+});
+
+// ===== MODAL LOGIC =====
+const modalBackdrop = document.getElementById("profileModal");
+const modalAvatar = document.getElementById("modalAvatar");
+const modalName = document.getElementById("modalName");
+const modalRole = document.getElementById("modalRole");
+const modalJoined = document.getElementById("modalJoined");
+const modalDays = document.getElementById("modalDays");
+const modalSeconds = document.getElementById("modalSeconds");
+const modalBio = document.getElementById("modalBio");
+const modalClose = document.getElementById("modalClose");
+
+let modalInterval = null;
+let modalJoinedDate = null;
+
+function openModalFromCard(card) {
+  const name = card.dataset.name;
+  const role = card.dataset.role;
+  const avatar = card.dataset.avatar;
+  const bio = card.dataset.bio;
+  const joinedStr = card.dataset.date;
+
+  modalJoinedDate = new Date(joinedStr);
+
+  modalAvatar.src = avatar;
+  modalAvatar.alt = name;
+  modalName.textContent = name;
+  modalRole.textContent = role;
+  modalBio.textContent = bio;
+
+  modalJoined.textContent = modalJoinedDate.toLocaleDateString("en", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  });
+
+  if (modalInterval) clearInterval(modalInterval);
+
+  function updateModalCounter() {
+    const now = new Date();
+    const diff = now - modalJoinedDate;
+    const totalSec = Math.max(0, Math.floor(diff / 1000));
+    const days = Math.floor(totalSec / 86400);
+    modalDays.textContent = days;
+    modalSeconds.textContent = totalSec;
+  }
+
+  updateModalCounter();
+  modalInterval = setInterval(updateModalCounter, 1000);
+
+  modalBackdrop.style.display = "flex";
+}
+
+document.querySelectorAll(".member-card").forEach(card => {
+  card.addEventListener("click", () => openModalFromCard(card));
+});
+
+function closeModal() {
+  modalBackdrop.style.display = "none";
+  if (modalInterval) clearInterval(modalInterval);
+}
+
+modalClose.addEventListener("click", closeModal);
+modalBackdrop.addEventListener("click", (e) => {
+  if (e.target === modalBackdrop) closeModal();
+});
+</script>
+
+</body>
+</html>
