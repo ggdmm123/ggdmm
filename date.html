@@ -390,6 +390,30 @@ body {
   color: #bfdbfe;
   margin-top: 4px;
 }
+
+/* MUSIC HINT BUTTON */
+#music-hint {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(10, 15, 40, 0.95);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 9px;
+  border: 1px solid #38bdf8;
+  box-shadow:
+    0 0 12px rgba(56,189,248,0.8),
+    0 0 20px rgba(37,99,235,0.9);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 50;
+}
+
+#music-hint span:first-child {
+  font-size: 12px;
+}
 </style>
 </head>
 
@@ -405,7 +429,6 @@ body {
 <!-- ADMIN CARD -->
 <div class="admin-card">
   <div class="admin-photo">
-    <!-- 🔧 change group.jpg to your real image file -->
     <img src="1.jpg" alt="GGD Myanmar">
   </div>
 
@@ -413,7 +436,7 @@ body {
 
   <div class="admin-meta">
     Created: <span id="adminDate"></span><br>
-    <a href="https://t.me/ggdmm1"> <span>GGD Myanmar</span></a>
+    <a href="https://t.me/ggdmm1"><span>GGD Myanmar</span></a>
   </div>
 
   <div class="admin-counter">
@@ -498,7 +521,7 @@ body {
        data-date="2024-08-09"
        data-avatar="0.jpg"
        data-bio="Cool breeze in the dark galaxy.">
-    <div class="avatar"><img src="0.jpg" alt="Mint"></div>
+    <div class="avatar"><img src="0.jpg" alt="Kageno"></div>
     <div class="info">
       <div class="name-row">
         <div class="name">Kageno</div>
@@ -512,16 +535,16 @@ body {
   <div class="member-card"
        data-name="Mint Ya Ta"
        data-role="Admin"
-       data-date="2024-012-09"
+       data-date="2024-12-09"
        data-avatar="yata.jpg"
        data-bio="Silent guardian of the group orbit.">
-    <div class="avatar"><img src="yata.jpg" alt="ma mint ya ta "></div>
+    <div class="avatar"><img src="yata.jpg" alt="Mint Ya Ta"></div>
     <div class="info">
       <div class="name-row">
         <div class="name">Mint Ya Ta</div>
         <div class="badge">⭐ Admin</div>
       </div>
-      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="join-date">Joined: Dec 9, 2024</div>
       <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
     </div>
   </div>
@@ -538,7 +561,7 @@ body {
         <div class="name">JooJoo</div>
         <div class="badge">⭐ Admin</div>
       </div>
-      <div class="join-date">Joined: Aug 9, 2024</div>
+      <div class="join-date">Joined: Apr 5, 2025</div>
       <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
     </div>
   </div>
@@ -562,92 +585,87 @@ body {
 </div>
 
 <div class="member-card"
-       data-name="Chuwahwah"
-       data-role="Member"
-       data-date="2025-08-09"
-       data-avatar="7.jpg"
-       data-bio="Calm orbit, strong gravity in GGD.">
-    <div class="avatar"><img src="7.jpg" alt="Chuwahwah"></div>
-    <div class="info">
-      <div class="name-row">
-        <div class="name">Chuwahwah</div>
-        <div class="badge">💠 Member</div>
-      </div>
-      <div class="join-date">Joined: Aug 9, 2024</div>
-      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+     data-name="Chuwahwah"
+     data-role="Member"
+     data-date="2025-08-09"
+     data-avatar="7.jpg"
+     data-bio="Calm orbit, strong gravity in GGD.">
+  <div class="avatar"><img src="7.jpg" alt="Chuwahwah"></div>
+  <div class="info">
+    <div class="name-row">
+      <div class="name">Chuwahwah</div>
+      <div class="badge">💠 Member</div>
     </div>
+    <div class="join-date">Joined: Aug 9, 2025</div>
+    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
 </div>
 
 <div class="member-card"
-       data-name="Chuwahwah"
-       data-role="Member"
-       data-date="2025-08-09"
-       data-avatar="8.jpg"
-       data-bio="Calm orbit, strong gravity in GGD.">
-    <div class="avatar"><img src="8.jpg" alt="Evyy"></div>
-    <div class="info">
-      <div class="name-row">
-        <div class="name">Evyy</div>
-        <div class="badge">💠 Member</div>
-      </div>
-      <div class="join-date">Joined: Aug 9, 2024</div>
-      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+     data-name="Evyy"
+     data-role="Member"
+     data-date="2025-08-09"
+     data-avatar="8.jpg"
+     data-bio="Calm orbit, strong gravity in GGD.">
+  <div class="avatar"><img src="8.jpg" alt="Evyy"></div>
+  <div class="info">
+    <div class="name-row">
+      <div class="name">Evyy</div>
+      <div class="badge">💠 Member</div>
     </div>
+    <div class="join-date">Joined: Aug 9, 2025</div>
+    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
 </div>
 
 <div class="member-card"
-       data-name="Htetx2"
-       data-role="Member"
-       data-date="2025-08-09"
-       data-avatar="9.jpg"
-       data-bio="Calm orbit, strong gravity in GGD.">
-    <div class="avatar"><img src="9.jpg" alt="Htetx2"></div>
-    <div class="info">
-      <div class="name-row">
-        <div class="name">Htetx2</div>
-        <div class="badge">💠 Member</div>
-      </div>
-      <div class="join-date">Joined: Aug 9, 2024</div>
-      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+     data-name="Htetx2"
+     data-role="Member"
+     data-date="2025-08-09"
+     data-avatar="9.jpg"
+     data-bio="Calm orbit, strong gravity in GGD.">
+  <div class="avatar"><img src="9.jpg" alt="Htetx2"></div>
+  <div class="info">
+    <div class="name-row">
+      <div class="name">Htetx2</div>
+      <div class="badge">💠 Member</div>
     </div>
+    <div class="join-date">Joined: Aug 9, 2025</div>
+    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
 </div>
 
 <div class="member-card"
-       data-name="Aba thr"
-       data-role="Member"
-       data-date="2025-08-09"
-       data-avatar="10.jpg"
-       data-bio="Calm orbit, strong gravity in GGD.">
-    <div class="avatar"><img src="10.jpg" alt="Aba thr"></div>
-    <div class="info">
-      <div class="name-row">
-        <div class="name">Aba thr</div>
-        <div class="badge">💠 Member</div>
-      </div>
-      <div class="join-date">Joined: Aug 9, 2024</div>
-      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+     data-name="Aba thr"
+     data-role="Member"
+     data-date="2025-08-09"
+     data-avatar="10.jpg"
+     data-bio="Calm orbit, strong gravity in GGD.">
+  <div class="avatar"><img src="10.jpg" alt="Aba thr"></div>
+  <div class="info">
+    <div class="name-row">
+      <div class="name">Aba thr</div>
+      <div class="badge">💠 Member</div>
     </div>
+    <div class="join-date">Joined: Aug 9, 2025</div>
+    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
 </div>
 
 <div class="member-card"
-       data-name="Hot Pot"
-       data-role="Member"
-       data-date="2025-08-09"
-       data-avatar="11.jpg"
-       data-bio="Calm orbit, strong gravity in GGD.">
-    <div class="avatar"><img src="11.jpg" alt="Aba thr"></div>
-    <div class="info">
-      <div class="name-row">
-        <div class="name">Hot Pot</div>
-        <div class="badge">💠 Member</div>
-      </div>
-      <div class="join-date">Joined: Aug 9, 2024</div>
-      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
+     data-name="Hot Pot"
+     data-role="Member"
+     data-date="2025-08-09"
+     data-avatar="11.jpg"
+     data-bio="Calm orbit, strong gravity in GGD.">
+  <div class="avatar"><img src="11.jpg" alt="Hot Pot"></div>
+  <div class="info">
+    <div class="name-row">
+      <div class="name">Hot Pot</div>
+      <div class="badge">💠 Member</div>
     </div>
+    <div class="join-date">Joined: Aug 9, 2025</div>
+    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
 </div>
 
@@ -669,6 +687,16 @@ body {
       Seconds in galaxy: <span id="modalSeconds"></span>
     </div>
   </div>
+</div>
+
+<!-- MUSIC: tap to play -->
+<audio id="bgm" loop>
+  <source src="Tu.mp3" type="audio/mpeg">
+</audio>
+
+<div id="music-hint">
+  <span>🎵</span>
+  <span>Tap for music</span>
 </div>
 
 <script>
@@ -706,7 +734,10 @@ document.querySelectorAll(".member-card").forEach(card => {
     const now = new Date();
     const diff = now - joined;
     const days = Math.floor(diff / 86400000);
-    card.querySelector(".mcDays").textContent = days < 0 ? 0 : days;
+    const el = card.querySelector(".mcDays");
+    if (el) {
+      el.textContent = days < 0 ? 0 : days;
+    }
   }
 
   updateMember();
@@ -778,6 +809,30 @@ modalClose.addEventListener("click", closeModal);
 modalBackdrop.addEventListener("click", (e) => {
   if (e.target === modalBackdrop) closeModal();
 });
+
+// ===== MUSIC: TAP TO PLAY =====
+const bgm = document.getElementById("bgm");
+const musicHint = document.getElementById("music-hint");
+
+function enableMusic() {
+  if (!bgm) return;
+  bgm.volume = 0.5;
+  bgm.play().catch(() => {});
+  if (musicHint) musicHint.style.display = "none";
+  document.removeEventListener("click", pageClickHandler);
+}
+
+function pageClickHandler() {
+  enableMusic();
+}
+
+if (musicHint) {
+  musicHint.addEventListener("click", (e) => {
+    e.stopPropagation();
+    enableMusic();
+  });
+  document.addEventListener("click", pageClickHandler);
+}
 </script>
 
 </body>
