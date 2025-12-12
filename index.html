@@ -398,13 +398,26 @@
     }
 
     /* ---------- RESPONSIVE / MOBILE IMPROVEMENTS ---------- */
+
+    /* Tablet: stack but keep some breathing room */
     @media (max-width: 900px) {
+      body {
+        display: block;                 /* stop vertical centering */
+        padding: 20px;
+      }
+
       .wrapper {
+        margin: 20px auto 32px;
         gap: 22px;
       }
 
       .hero-card {
-        padding: 24px 22px 22px;
+        padding: 24px 20px 20px;
+        flex: 1 1 100%;
+      }
+
+      .menu-card {
+        flex: 1 1 100%;
       }
 
       .hero-title {
@@ -416,9 +429,10 @@
       }
     }
 
+    /* Phone */
     @media (max-width: 720px) {
       body {
-        padding: 18px;
+        padding: 16px;
       }
 
       .wrapper {
@@ -430,6 +444,7 @@
       .menu-card {
         border-radius: 20px;
         box-shadow: 0 16px 32px rgba(0,0,0,0.9);
+        animation: none;               /* stop floating on mobile for smoother scroll */
       }
 
       .hero-banner {
@@ -463,9 +478,14 @@
       }
     }
 
+    /* Very small phones */
     @media (max-width: 520px) {
       body {
-        padding: 14px;
+        padding: 12px;
+      }
+
+      .hero-card {
+        padding: 20px 16px 18px;
       }
 
       .hero-title {
@@ -546,7 +566,7 @@
             <span class="label">Info</span>
           </a>
 
-          <!-- NEW REQUEST TILE -->
+          <!-- REQUEST TILE -->
           <a href="request.html" class="menu-tile request">
             <span class="icon">📩</span>
             <span class="label">Request</span>
@@ -562,4 +582,3 @@
   </div>
 </body>
 </html>
-
