@@ -76,7 +76,7 @@ body {
 }
 
 .f1 { top: 22%; animation: slideText 28s linear infinite; }
-.f2 { top: 70%; animation: slideText 34s linear infinite; }
+*f2 { top: 70%; animation: slideText 34s linear infinite; }
 .f3 { top: 85%; animation: slideText 40s linear infinite; }
 
 @keyframes slideText {
@@ -390,30 +390,6 @@ body {
   color: #bfdbfe;
   margin-top: 4px;
 }
-
-/* MUSIC HINT BUTTON */
-#music-hint {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(10, 15, 40, 0.95);
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 9px;
-  border: 1px solid #38bdf8;
-  box-shadow:
-    0 0 12px rgba(56,189,248,0.8),
-    0 0 20px rgba(37,99,235,0.9);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  z-index: 50;
-}
-
-#music-hint span:first-child {
-  font-size: 12px;
-}
 </style>
 </head>
 
@@ -689,16 +665,6 @@ body {
   </div>
 </div>
 
-<!-- MUSIC: tap to play -->
-<audio id="bgm" loop>
-  <source src="Tu.mp3" type="audio/mpeg">
-</audio>
-
-<div id="music-hint">
-  <span>🎵</span>
-  <span>Tap for music</span>
-</div>
-
 <script>
 // ===== ADMIN COUNTER =====
 const adminStart = new Date(2024, 7, 9); // 9 Aug 2024
@@ -809,32 +775,7 @@ modalClose.addEventListener("click", closeModal);
 modalBackdrop.addEventListener("click", (e) => {
   if (e.target === modalBackdrop) closeModal();
 });
-
-// ===== MUSIC: TAP TO PLAY =====
-const bgm = document.getElementById("bgm");
-const musicHint = document.getElementById("music-hint");
-
-function enableMusic() {
-  if (!bgm) return;
-  bgm.volume = 0.5;
-  bgm.play().catch(() => {});
-  if (musicHint) musicHint.style.display = "none";
-  document.removeEventListener("click", pageClickHandler);
-}
-
-function pageClickHandler() {
-  enableMusic();
-}
-
-if (musicHint) {
-  musicHint.addEventListener("click", (e) => {
-    e.stopPropagation();
-    enableMusic();
-  });
-  document.addEventListener("click", pageClickHandler);
-}
 </script>
 
 </body>
 </html>
-
