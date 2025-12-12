@@ -14,19 +14,22 @@
     body {
       min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1e293b, #020617 60%);
+      background: radial-gradient(circle at top, #020617, #000000 70%);
       color: #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      overflow-x: hidden;
     }
 
+    /* ---------- STAR SKY + BLUR BACKGROUND ---------- */
     .sky {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: -1;
+      z-index: -2;
+      filter: blur(1px);
     }
 
     .sky::before,
@@ -36,23 +39,37 @@
       inset: 0;
       background-image:
         radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 2px),
-        radial-gradient(circle, rgba(148,163,184,0.5) 1px, transparent 2px);
+        radial-gradient(circle, rgba(148,163,184,0.4) 1px, transparent 2px);
       background-size: 260px 260px, 360px 360px;
-      opacity: 0.25;
+      opacity: 0.23;
       animation: stars 40s linear infinite;
     }
 
     .sky::after {
-      opacity: 0.18;
-      animation-duration: 65s;
+      opacity: 0.15;
+      animation-duration: 70s;
     }
 
     @keyframes stars {
       0%   { transform: translateY(0); }
-      50%  { transform: translateY(-14px); }
+      50%  { transform: translateY(-16px); }
       100% { transform: translateY(0); }
     }
 
+    /* gentle horizon blur */
+    .horizon {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 180px;
+      background: radial-gradient(circle at bottom, rgba(15,23,42,0.8), transparent 65%);
+      z-index: -1;
+      filter: blur(6px);
+      opacity: 0.85;
+    }
+
+    /* ---------- LAYOUT WRAPPER ---------- */
     .wrapper {
       max-width: 1120px;
       width: 100%;
@@ -61,29 +78,49 @@
       gap: 28px;
       align-items: stretch;
       justify-content: center;
+      animation: pageFadeIn 0.55s ease-out both;
     }
 
-    /* LEFT: HERO CARD ----------------------------------------------------- */
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---------- LEFT: HERO CARD ---------- */
     .hero-card {
       flex: 1 1 460px;
-      background: rgba(15,23,42,0.96);
+      background: rgba(15,23,42,0.97);
       border-radius: 24px;
-      border: 1px solid rgba(148,163,184,0.4);
-      box-shadow: 0 20px 40px rgba(15,23,42,0.85);
+      border: 1px solid rgba(30,64,175,0.7);
+      box-shadow: 0 22px 46px rgba(0,0,0,0.85);
       padding: 28px 28px 24px;
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(10px);
+      animation: floatSlow 7s ease-in-out infinite alternate;
     }
 
     .hero-card::before {
       content: "";
       position: absolute;
-      inset: 0;
+      inset: -40px;
       background:
-        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(52,211,153,0.18), transparent 60%);
+        radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(52,211,153,0.18), transparent 65%);
       opacity: 0.9;
       pointer-events: none;
+      filter: blur(8px);
+    }
+
+    @keyframes floatSlow {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-4px); }
     }
 
     .hero-inner {
@@ -96,10 +133,11 @@
       height: 210px;
       border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(148,163,184,0.4);
+      border: 1px solid rgba(148,163,184,0.45);
       margin-bottom: 20px;
+      position: relative;
       background: #020617;
-      box-shadow: 0 16px 26px rgba(15,23,42,0.9);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.9);
     }
 
     .hero-banner img {
@@ -108,6 +146,26 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      transform: scale(1.03);
+      filter: saturate(1.08) contrast(1.04);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .hero-banner::after {
+      /* soft top & bottom blur overlay */
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(15,23,42,0.65), transparent 40%),
+        radial-gradient(circle at center, rgba(15,23,42,0.25), transparent 60%);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .hero-banner:hover img {
+      transform: scale(1.05);
+      filter: saturate(1.12) contrast(1.06);
     }
 
     .meta-row {
@@ -124,7 +182,7 @@
       height: 8px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 6px rgba(34,197,94,0.8);
+      box-shadow: 0 0 8px rgba(34,197,94,0.8);
     }
 
     .meta-sep {
@@ -170,7 +228,7 @@
       font-weight: 600;
       font-size: 0.98rem;
       text-decoration: none;
-      box-shadow: 0 12px 24px rgba(15,23,42,0.9);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.9);
       cursor: pointer;
       transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
     }
@@ -180,33 +238,37 @@
     }
 
     .cta-main:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
       background: linear-gradient(135deg, #facc15, #f97316);
-      box-shadow: 0 16px 28px rgba(15,23,42,0.9);
+      box-shadow: 0 18px 28px rgba(0,0,0,0.95);
     }
 
-    /* RIGHT: MENU CARD ----------------------------------------------------- */
+    /* ---------- RIGHT: MENU CARD ---------- */
     .menu-card {
       flex: 0 1 340px;
       background: rgba(15,23,42,0.96);
       border-radius: 24px;
-      border: 1px solid rgba(30,64,175,0.6);
-      box-shadow: 0 20px 40px rgba(15,23,42,0.85);
+      border: 1px solid rgba(30,64,175,0.8);
+      box-shadow: 0 22px 46px rgba(0,0,0,0.9);
       padding: 26px 22px 20px;
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       gap: 18px;
+      backdrop-filter: blur(10px);
+      animation: floatSlow 7s ease-in-out infinite alternate;
+      animation-delay: 0.4s;
     }
 
     .menu-card::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(30,64,175,0.45), transparent 55%);
+      inset: -40px;
+      background: radial-gradient(circle at top, rgba(30,64,175,0.5), transparent 60%);
       opacity: 0.6;
       pointer-events: none;
+      filter: blur(12px);
     }
 
     .menu-inner {
@@ -224,22 +286,28 @@
     }
 
     .menu-avatar {
-      width: 70px;
-      height: 70px;
+      width: 72px;
+      height: 72px;
       border-radius: 999px;
       padding: 3px;
       background: radial-gradient(circle at top, #facc15, #f97316);
-      box-shadow: 0 10px 22px rgba(15,23,42,0.8);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.9);
       display: flex;
       align-items: center;
       justify-content: center;
+      animation: floatAvatar 4.8s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatAvatar {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-6px); }
     }
 
     .menu-avatar img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 2px solid rgba(15,23,42,0.85);
+      border: 2px solid rgba(15,23,42,0.9);
       object-fit: cover;
     }
 
@@ -267,7 +335,7 @@
     }
 
     .menu-tile {
-      background: rgba(15,23,42,0.96);
+      background: rgba(15,23,42,0.98);
       border-radius: 18px;
       border: 1px solid rgba(51,65,85,0.9);
       padding: 16px 12px;
@@ -278,36 +346,45 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      box-shadow: 0 8px 18px rgba(15,23,42,0.85);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      gap: 6px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.9);
+      transition: transform 0.16s ease, box-shadow 0.16s ease,
+                  border-color 0.16s ease, background 0.16s ease;
     }
 
+    /* NEW ICONS */
     .menu-tile span.icon {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
 
     .menu-tile span.label {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       font-weight: 500;
     }
 
     .menu-tile:hover {
-      transform: translateY(-2px);
-      background: rgba(30,64,175,0.92);
-      border-color: rgba(129,140,248,0.95);
-      box-shadow: 0 14px 26px rgba(15,23,42,0.95);
+      transform: translateY(-3px) translateZ(0);
+      background: rgba(30,64,175,0.95);
+      border-color: rgba(129,140,248,0.98);
+      box-shadow: 0 16px 30px rgba(0,0,0,1);
     }
 
     .menu-tile.community {
-      background: rgba(24,35,58,0.96);
+      background: linear-gradient(145deg, rgba(251,191,36,0.95), rgba(248,250,252,0.98));
+      color: #111827;
+      border-color: rgba(248,250,252,0.9);
+    }
+
+    .menu-tile.community:hover {
+      background: linear-gradient(145deg, #facc15, #fbbf24);
+      border-color: #fbbf24;
     }
 
     .menu-footer {
       font-size: 0.78rem;
       color: #9ca3af;
       text-align: center;
-      margin-top: 2px;
+      margin-top: 4px;
       line-height: 1.6;
     }
 
@@ -320,7 +397,7 @@
       text-decoration: underline;
     }
 
-    /* RESPONSIVE ----------------------------------------------------------- */
+    /* ---------- RESPONSIVE / MOBILE IMPROVEMENTS ---------- */
     @media (max-width: 900px) {
       .wrapper {
         gap: 22px;
@@ -344,6 +421,11 @@
         padding: 18px;
       }
 
+      .wrapper {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
       .hero-card,
       .menu-card {
         border-radius: 20px;
@@ -351,6 +433,32 @@
 
       .hero-banner {
         height: 180px;
+      }
+
+      /* bigger touch targets on phone */
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-tile {
+        padding: 16px 14px;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 12px;
+        text-align: left;
+      }
+
+      .menu-tile span.icon {
+        font-size: 1.6rem;
+      }
+
+      .menu-tile span.label {
+        font-size: 1rem;
+      }
+
+      .cta-main {
+        width: 100%;
+        justify-content: center;
       }
     }
 
@@ -367,13 +475,14 @@
 </head>
 <body>
   <div class="sky"></div>
+  <div class="horizon"></div>
 
   <div class="wrapper">
     <!-- LEFT HERO --------------------------------------------------------- -->
     <section class="hero-card">
       <div class="hero-inner">
         <div class="hero-banner">
-          <!-- Big banner image -->
+          <!-- Big banner image (your duck + Myanmar flag) -->
           <img src="ggd.jpg" alt="GGD MM banner">
         </div>
 
@@ -387,8 +496,7 @@
         <h1 class="hero-title">GGD MM</h1>
 
         <p class="hero-sub">
-          A cozy place for Myanmar Goose Goose Duck players to hang out,
-          play together, relax after games, and learn from each other.
+          Apple lii loke ny tr lh?
         </p>
 
         <p class="hero-note">
@@ -418,18 +526,18 @@
         </div>
 
         <div class="menu-grid">
-          <a href="date.html" class="menu-tile">
-            <span class="icon">👻</span>
+          <a href="members.html" class="menu-tile">
+            <span class="icon">👥</span>
             <span class="label">Members</span>
           </a>
 
           <a href="playlist.html" class="menu-tile">
-            <span class="icon">🎧</span>
+            <span class="icon">🎵</span>
             <span class="label">Music</span>
           </a>
 
           <a href="info.html" class="menu-tile">
-            <span class="icon">📘</span>
+            <span class="icon">ℹ️</span>
             <span class="label">Info</span>
           </a>
 
@@ -448,4 +556,3 @@
   </div>
 </body>
 </html>
-
