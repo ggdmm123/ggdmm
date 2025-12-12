@@ -352,7 +352,6 @@
                   border-color 0.16s ease, background 0.16s ease;
     }
 
-    /* NEW ICONS */
     .menu-tile span.icon {
       font-size: 1.5rem;
     }
@@ -369,13 +368,14 @@
       box-shadow: 0 16px 30px rgba(0,0,0,1);
     }
 
-    .menu-tile.community {
+    /* SPECIAL STYLE FOR REQUEST TILE (replaces old Community tile) */
+    .menu-tile.request {
       background: linear-gradient(145deg, rgba(251,191,36,0.95), rgba(248,250,252,0.98));
       color: #111827;
       border-color: rgba(248,250,252,0.9);
     }
 
-    .menu-tile.community:hover {
+    .menu-tile.request:hover {
       background: linear-gradient(145deg, #facc15, #fbbf24);
       border-color: #fbbf24;
     }
@@ -429,6 +429,7 @@
       .hero-card,
       .menu-card {
         border-radius: 20px;
+        box-shadow: 0 16px 32px rgba(0,0,0,0.9);
       }
 
       .hero-banner {
@@ -463,6 +464,10 @@
     }
 
     @media (max-width: 520px) {
+      body {
+        padding: 14px;
+      }
+
       .hero-title {
         font-size: 1.7rem;
       }
@@ -496,7 +501,7 @@
         <h1 class="hero-title">GGD MM</h1>
 
         <p class="hero-sub">
-          Apple lii loke ny tr lh?
+          Apple min lii loke nrr lh?
         </p>
 
         <p class="hero-note">
@@ -526,7 +531,7 @@
         </div>
 
         <div class="menu-grid">
-          <a href="date.html" class="menu-tile">
+          <a href="members.html" class="menu-tile">
             <span class="icon">👥</span>
             <span class="label">Members</span>
           </a>
@@ -541,9 +546,10 @@
             <span class="label">Info</span>
           </a>
 
-          <a href="community.html" class="menu-tile community">
-            <span class="icon">🦆</span>
-            <span class="label">Community</span>
+          <!-- NEW REQUEST TILE -->
+          <a href="request.html" class="menu-tile request">
+            <span class="icon">📩</span>
+            <span class="label">Request</span>
           </a>
         </div>
 
@@ -556,4 +562,3 @@
   </div>
 </body>
 </html>
-
