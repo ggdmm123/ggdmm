@@ -17,116 +17,118 @@
   box-sizing: border-box;
 }
 
+/* GLOBAL */
 body {
-  background: radial-gradient(circle at top, #03010d, #000000 80%);
-  font-family: "Pixel", sans-serif;
-  color: #dbeafe;
+  background: radial-gradient(circle at top, #020617, #02010a 70%);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e5e7eb;
   overflow-x: hidden;
+  line-height: 1.6;
+  padding-bottom: 40px;
 }
 
-/* background galaxy */
+/* Optional Pixel accent class if you want to use it somewhere */
+.pixel-text {
+  font-family: "Pixel", sans-serif;
+}
+
+/* ---------- BACKGROUND (softened) ---------- */
 .bg-clouds {
   position: fixed;
   inset: 0;
   z-index: -3;
   background:
-    radial-gradient(circle at 30% 20%, rgba(120, 0, 255, 0.55), transparent 55%),
-    radial-gradient(circle at 80% 50%, rgba(0, 140, 255, 0.6), transparent 60%),
-    radial-gradient(circle at 50% 90%, rgba(0, 30, 100, 0.9), transparent 70%);
-  animation: cloudFloat 18s infinite alternate ease-in-out;
-  filter: blur(45px);
-  opacity: 0.9;
+    radial-gradient(circle at 25% 20%, rgba(56, 189, 248, 0.25), transparent 55%),
+    radial-gradient(circle at 80% 60%, rgba(129, 140, 248, 0.25), transparent 60%);
+  animation: cloudFloat 40s infinite alternate ease-in-out;
+  filter: blur(40px);
+  opacity: 0.6;
 }
 
 @keyframes cloudFloat {
   0% { transform: scale(1) translate(0, 0); }
-  100% { transform: scale(1.15) translate(-40px, -30px); }
+  100% { transform: scale(1.05) translate(-20px, -15px); }
 }
 
-/* stars */
+/* stars – very subtle */
 .stars {
   position: fixed;
   inset: 0;
   z-index: -2;
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 2px),
-    radial-gradient(circle, rgba(180,200,255,0.8) 1px, transparent 2px),
-    radial-gradient(circle, rgba(120,150,255,0.9) 1px, transparent 2px);
-  background-size: 220px 220px, 260px 260px, 300px 300px;
-  animation: starTwinkle 6s infinite linear;
-  opacity: 0.75;
+    radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 2px),
+    radial-gradient(circle, rgba(148,163,184,0.4) 1px, transparent 2px);
+  background-size: 260px 260px, 320px 320px;
+  animation: starTwinkle 18s infinite linear;
+  opacity: 0.3;
 }
 
 @keyframes starTwinkle {
-  0% { opacity: 0.55; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(-8px); }
-  100% { opacity: 0.55; transform: translateY(0); }
+  0% { opacity: 0.25; transform: translateY(0); }
+  50% { opacity: 0.45; transform: translateY(-4px); }
+  100% { opacity: 0.25; transform: translateY(0); }
 }
 
-/* floating text */
+/* floating text – calmer */
 .ftext {
   position: fixed;
   left: -50%;
   white-space: nowrap;
-  font-size: 12px;
-  color: rgba(180, 220, 255, 0.9);
-  text-shadow: 0 0 9px rgba(120, 170, 255, 0.9);
-  opacity: 0.9;
+  font-size: 11px;
+  color: rgba(191, 219, 254, 0.85);
+  text-shadow: 0 0 5px rgba(15, 23, 42, 0.8);
+  opacity: 0.8;
   z-index: -1;
 }
 
-.f1 { top: 22%; animation: slideText 28s linear infinite; }
-*f2 { top: 70%; animation: slideText 34s linear infinite; }
-.f3 { top: 85%; animation: slideText 40s linear infinite; }
+.f1 { top: 22%; animation: slideText 35s linear infinite; }
+.f2 { top: 70%; animation: slideText 42s linear infinite; }
+.f3 { top: 85%; animation: slideText 48s linear infinite; }
 
 @keyframes slideText {
   0% { transform: translateX(-60%); }
   100% { transform: translateX(160%); }
 }
 
-/* ADMIN CARD */
+/* ---------- ADMIN CARD (comfort) ---------- */
 .admin-card {
-  max-width: 380px;
-  margin: 40px auto 20px;
-  padding: 24px;
+  max-width: 420px;
+  margin: 40px auto 24px;
+  padding: 22px 22px 18px;
   border-radius: 20px;
   backdrop-filter: blur(18px);
-  background: rgba(10, 10, 20, 0.78);
-  border: 1px solid rgba(150, 200, 255, 0.5);
-  box-shadow:
-    0 0 40px rgba(100, 150, 255, 0.5),
-    0 0 80px rgba(60, 120, 255, 0.45),
-    0 20px 60px rgba(0, 0, 0, 1);
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow: 0 18px 30px rgba(15, 23, 42, 0.9);
   text-align: center;
-  animation: floatCard 5s ease-in-out infinite;
   position: relative;
+  animation: floatCard 10s ease-in-out infinite;
 }
 
 @keyframes floatCard {
-  0%,100% { transform: translateY(0) rotateX(2deg); }
-  50% { transform: translateY(-12px) rotateX(-2deg); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .admin-card::before {
   content: "";
   position: absolute;
-  inset: -3px;
-  border-radius: 22px;
-  background: linear-gradient(135deg, #003cff, #8f00ff, #007aff);
-  filter: blur(14px);
+  inset: -4px;
+  border-radius: 24px;
+  background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.4), transparent 60%);
   opacity: 0.6;
   z-index: -1;
 }
 
 /* admin photo */
 .admin-photo {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   margin: 0 auto 14px;
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
-  border: 2px solid rgba(180, 220, 255, 0.9);
-  box-shadow: 0 0 20px rgba(100,150,255,0.9);
+  border: 2px solid rgba(191, 219, 254, 0.9);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.9);
 }
 
 .admin-photo img {
@@ -136,121 +138,121 @@ body {
 }
 
 .admin-title {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #d6e9ff;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #e5e7eb;
+  letter-spacing: 0.06em;
 }
 
 .admin-meta {
-  font-size: 10px;
-  color: #a7c2ff;
+  font-size: 0.8rem;
+  color: #9ca3af;
   line-height: 1.7;
 }
 
 .admin-meta span {
-  color: #dcecff;
+  color: #e0f2fe;
 }
 
+/* admin counters */
 .admin-counter {
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   margin-top: 16px;
   flex-wrap: wrap;
 }
 
 .admin-box {
-  padding: 10px 12px;
-  background: rgba(10,20,40,0.9);
-  border-radius: 14px;
+  padding: 8px 10px;
+  background: rgba(15, 23, 42, 0.98);
+  border-radius: 12px;
   min-width: 70px;
-  border: 1px solid rgba(160,180,255,0.7);
-  box-shadow:
-    0 0 18px rgba(80,120,255,0.7),
-    inset 0 0 12px rgba(40,60,140,0.7);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.9);
 }
 
 .admin-box strong {
-  font-size: 18px;
+  font-size: 1.1rem;
   display: block;
-  color: #e0f2ff;
+  color: #e5f2ff;
 }
 
 .admin-label {
-  font-size: 10px;
-  color: #9fbfff;
+  font-size: 0.7rem;
+  color: #9ca3af;
 }
 
-/* MEMBERS SECTION TITLE */
+/* ---------- MEMBERS SECTION TITLE ---------- */
 .section-title {
   text-align: center;
-  font-size: 14px;
-  margin-top: 32px;
+  font-size: 0.9rem;
+  margin-top: 28px;
   margin-bottom: 12px;
-  letter-spacing: 1px;
-  color: #b9d6ff;
+  letter-spacing: 0.12em;
+  color: #c7d2fe;
 }
 
-/* members grid */
+/* ---------- MEMBERS GRID ---------- */
 .members {
   max-width: 1100px;
-  margin: 0 auto 60px;
+  margin: 0 auto 40px;
   padding: 0 16px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
+  gap: 18px;
 }
 
 /* member card */
 .member-card {
   position: relative;
-  padding: 16px;
-  border-radius: 18px;
-  background: rgba(10, 10, 20, 0.88);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(148, 163, 184, 0.6);
-  box-shadow:
-    0 0 22px rgba(59, 130, 246, 0.6),
-    0 0 40px rgba(37, 99, 235, 0.7);
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  box-shadow: 0 12px 22px rgba(15, 23, 42, 0.95);
   display: flex;
-  gap: 14px;
+  gap: 12px;
   align-items: center;
   cursor: pointer;
   transform-origin: center;
   transition:
-    transform 0.22s ease,
-    box-shadow 0.22s ease,
-    background 0.22s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .member-card::before {
   content: "";
   position: absolute;
-  inset: -2px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #38bdf8, #4f46e5, #0ea5e9);
-  filter: blur(10px);
+  inset: 0;
+  border-radius: 16px;
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%);
   z-index: -1;
-  opacity: 0.6;
+  opacity: 0;
+  transition: opacity 0.18s ease;
 }
 
 .member-card:hover {
-  transform: translateY(-6px) scale(1.03) rotateX(3deg) rotateY(-2deg);
-  box-shadow:
-    0 0 28px rgba(100,150,255,0.9),
-    0 0 60px rgba(37,99,235,0.9);
-  background: rgba(15, 23, 42, 0.95);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px rgba(15, 23, 42, 1);
+  border-color: rgba(129, 140, 248, 0.9);
+  background: rgba(15, 23, 42, 0.98);
+}
+
+.member-card:hover::before {
+  opacity: 1;
 }
 
 .avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
   overflow: hidden;
-  border: 2px solid #c4ddff;
-  box-shadow:
-    0 0 16px rgba(96, 165, 250, 0.9),
-    0 0 24px rgba(59, 130, 246, 0.7);
+  border: 2px solid #e5e7eb;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.95);
 }
 
 .avatar img {
@@ -267,39 +269,41 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 6px;
 }
 
 .name {
-  font-size: 12px;
-  margin-bottom: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+  color: #f9fafb;
 }
 
 .badge {
-  font-size: 8px;
-  padding: 2px 6px;
+  font-size: 0.65rem;
+  padding: 2px 8px;
   border-radius: 999px;
-  background: rgba(37, 99, 235, 0.4);
-  border: 1px solid rgba(129, 140, 248, 0.9);
+  background: rgba(37, 99, 235, 0.18);
+  border: 1px solid rgba(129, 140, 248, 0.8);
   color: #bfdbfe;
 }
 
 .join-date {
-  font-size: 9px;
-  color: #9bb8ff;
+  font-size: 0.72rem;
+  color: #9ca3af;
   margin-top: 2px;
 }
 
 .small-counter {
-  margin-top: 6px;
-  font-size: 9px;
-  color: #a7c9ff;
+  margin-top: 4px;
+  font-size: 0.72rem;
+  color: #a5b4fc;
 }
 
-/* MODAL */
+/* ---------- MODAL (comfort) ---------- */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 15, 0.8);
+  background: rgba(15, 23, 42, 0.85);
   display: none;
   align-items: center;
   justify-content: center;
@@ -311,11 +315,9 @@ body {
   max-width: 90vw;
   border-radius: 18px;
   padding: 18px 16px 16px;
-  background: rgba(10, 15, 40, 0.95);
-  border: 1px solid rgba(191, 219, 254, 0.7);
-  box-shadow:
-    0 0 26px rgba(96, 165, 250, 0.9),
-    0 0 60px rgba(37, 99, 235, 0.9);
+  background: rgba(15, 23, 42, 0.98);
+  border: 1px solid rgba(191, 219, 254, 0.8);
+  box-shadow: 0 22px 40px rgba(15, 23, 42, 1);
   position: relative;
   text-align: center;
 }
@@ -323,24 +325,21 @@ body {
 .modal::before {
   content: "";
   position: absolute;
-  inset: -3px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #38bdf8, #4f46e5, #0ea5e9);
-  filter: blur(10px);
+  inset: 0;
+  border-radius: 18px;
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.25), transparent 65%);
   z-index: -1;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .modal-photo {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   margin: 0 auto 10px;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
   border: 2px solid rgba(191, 219, 254, 0.9);
-  box-shadow:
-    0 0 18px rgba(96, 165, 250, 0.9),
-    0 0 28px rgba(37, 99, 235, 0.8);
+  box-shadow: 0 14px 24px rgba(15, 23, 42, 1);
 }
 
 .modal-photo img {
@@ -350,18 +349,19 @@ body {
 }
 
 .modal-name {
-  font-size: 13px;
+  font-size: 0.98rem;
   margin-bottom: 4px;
+  color: #f9fafb;
 }
 
 .modal-role {
-  font-size: 9px;
+  font-size: 0.8rem;
   color: #bfdbfe;
   margin-bottom: 8px;
 }
 
 .modal-meta {
-  font-size: 8px;
+  font-size: 0.72rem;
   color: #a5b4fc;
   margin-bottom: 8px;
 }
@@ -371,8 +371,8 @@ body {
 }
 
 .modal-bio {
-  font-size: 9px;
-  color: #cbd5ff;
+  font-size: 0.76rem;
+  color: #e5e7eb;
   margin-bottom: 10px;
 }
 
@@ -380,15 +380,46 @@ body {
   position: absolute;
   top: 6px;
   right: 10px;
-  font-size: 12px;
+  font-size: 0.9rem;
   cursor: pointer;
+  color: #9ca3af;
+}
+
+.modal-close:hover {
   color: #e5e7eb;
 }
 
 .modal-counter {
-  font-size: 9px;
+  font-size: 0.72rem;
   color: #bfdbfe;
   margin-top: 4px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  .admin-card {
+    margin: 24px 12px 16px;
+    padding: 18px 16px 16px;
+  }
+
+  .admin-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .members {
+    padding: 0 12px;
+    gap: 14px;
+  }
+
+  .member-card {
+    padding: 12px;
+  }
+
+  .avatar {
+    width: 58px;
+    height: 58px;
+  }
 }
 </style>
 </head>
@@ -558,90 +589,90 @@ body {
       <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
     </div>
   </div>
-</div>
 
-<div class="member-card"
-     data-name="Chuwahwah"
-     data-role="Member"
-     data-date="2025-08-09"
-     data-avatar="7.jpg"
-     data-bio="Calm orbit, strong gravity in GGD.">
-  <div class="avatar"><img src="7.jpg" alt="Chuwahwah"></div>
-  <div class="info">
-    <div class="name-row">
-      <div class="name">Chuwahwah</div>
-      <div class="badge">💠 Member</div>
+  <div class="member-card"
+       data-name="Chuwahwah"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="7.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="7.jpg" alt="Chuwahwah"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Chuwahwah</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2025</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
     </div>
-    <div class="join-date">Joined: Aug 9, 2025</div>
-    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
-</div>
 
-<div class="member-card"
-     data-name="Evyy"
-     data-role="Member"
-     data-date="2025-08-09"
-     data-avatar="8.jpg"
-     data-bio="Calm orbit, strong gravity in GGD.">
-  <div class="avatar"><img src="8.jpg" alt="Evyy"></div>
-  <div class="info">
-    <div class="name-row">
-      <div class="name">Evyy</div>
-      <div class="badge">💠 Member</div>
+  <div class="member-card"
+       data-name="Evyy"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="8.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="8.jpg" alt="Evyy"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Evyy</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2025</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
     </div>
-    <div class="join-date">Joined: Aug 9, 2025</div>
-    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
-</div>
 
-<div class="member-card"
-     data-name="Htetx2"
-     data-role="Member"
-     data-date="2025-08-09"
-     data-avatar="9.jpg"
-     data-bio="Calm orbit, strong gravity in GGD.">
-  <div class="avatar"><img src="9.jpg" alt="Htetx2"></div>
-  <div class="info">
-    <div class="name-row">
-      <div class="name">Htetx2</div>
-      <div class="badge">💠 Member</div>
+  <div class="member-card"
+       data-name="Htetx2"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="9.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="9.jpg" alt="Htetx2"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Htetx2</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2025</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
     </div>
-    <div class="join-date">Joined: Aug 9, 2025</div>
-    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
-</div>
 
-<div class="member-card"
-     data-name="Aba thr"
-     data-role="Member"
-     data-date="2025-08-09"
-     data-avatar="10.jpg"
-     data-bio="Calm orbit, strong gravity in GGD.">
-  <div class="avatar"><img src="10.jpg" alt="Aba thr"></div>
-  <div class="info">
-    <div class="name-row">
-      <div class="name">Aba thr</div>
-      <div class="badge">💠 Member</div>
+  <div class="member-card"
+       data-name="Aba thr"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="10.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="10.jpg" alt="Aba thr"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Aba thr</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2025</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
     </div>
-    <div class="join-date">Joined: Aug 9, 2025</div>
-    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
-</div>
 
-<div class="member-card"
-     data-name="Hot Pot"
-     data-role="Member"
-     data-date="2025-08-09"
-     data-avatar="11.jpg"
-     data-bio="Calm orbit, strong gravity in GGD.">
-  <div class="avatar"><img src="11.jpg" alt="Hot Pot"></div>
-  <div class="info">
-    <div class="name-row">
-      <div class="name">Hot Pot</div>
-      <div class="badge">💠 Member</div>
+  <div class="member-card"
+       data-name="Hot Pot"
+       data-role="Member"
+       data-date="2025-08-09"
+       data-avatar="11.jpg"
+       data-bio="Calm orbit, strong gravity in GGD.">
+    <div class="avatar"><img src="11.jpg" alt="Hot Pot"></div>
+    <div class="info">
+      <div class="name-row">
+        <div class="name">Hot Pot</div>
+        <div class="badge">💠 Member</div>
+      </div>
+      <div class="join-date">Joined: Aug 9, 2025</div>
+      <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
     </div>
-    <div class="join-date">Joined: Aug 9, 2025</div>
-    <div class="small-counter">Days in galaxy: <span class="mcDays">0</span></div>
   </div>
 </div>
 
